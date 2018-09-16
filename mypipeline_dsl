@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+    stages{
+        stage('checkout'){
+            steps{
+                git branch: 'master', url: 'https://github.com/jleetutorial/maven-project.git'
+            }
+        }
+        stage('compilation'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('unit testing'){
+            steps{
+                sh 'echo test'
+            }
+        }
+       stage('build'){
+            steps{
+                sh 'mvn install'
+            }
+        }
+       stage('package'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+
+        stage('deploy'){
+            steps{
+                sh 'echo test'
+            }
+        }
+    }
+}
